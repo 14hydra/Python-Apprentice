@@ -1,4 +1,5 @@
-from Car import Car, Motorcycle
+from Car import Car
+from Motorcycle import Motorcycle
 
 car = Car(numwheels=4, color="white", model="aston martin")
 
