@@ -41,7 +41,13 @@ def add_definition(db, key, value):
 
     # Check the limit
 
+    if len(db) == 5:
+        print(error("Error", "Limit reached"))
+        return
+
     # Set the item in the database
+    
+    db[key] = value
 
     pass
 
@@ -60,6 +66,9 @@ def delete_definition(db, key):
 
     # Delete the item from db if it is present
 
+    if key in db:
+        db.remove(key)
+
     pass
 
 
@@ -77,6 +86,12 @@ def is_funny(definition):
     """
     
     # Return True if the definition contains any of the funny words, False otherwise
+
+    l = ['fun', 'funny', 'hilarious', 'amusing', 'pants', 'spleen']
+
+    for i in l:
+        if i in definition:
+            return True
 
     return False
 
@@ -99,6 +114,13 @@ def update_listbox(db):
     # Add each definition to a string
     # iterate over the dict's key-value pairs and turn them into
     # strings, then add the strings to the list with .append()
+
+    l = []
+    for i in db:
+        str = ""
+        str = str + i
+        str = str + ": " + db[i]
+        l.append(str)
 
     return l
 
